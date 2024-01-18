@@ -79,23 +79,21 @@ public class MetaInterview {
     */
 
     /**
-     * TODO: does the last 7 get added twice.
      * @param root
      * @return
      */
     public static List<Integer> solution(Node root){
         Queue<Node> q = new LinkedList<>();
         List<Integer> res = new ArrayList<>();
-        int currentLevel = 0;
+        int currentLevel = 0;//not needed just making it clear for my head
         q.offer(root);
         while(!q.isEmpty()){
           int levelSize = q.size();
           for(int i = 0 ; i < levelSize; i++){
             Node curr = q.poll();
-            if(i == 0 && currentLevel != 0){
+            if(i == 0 ){
               res.add(curr.val);
-            }
-            if(i == levelSize - 1){
+            }else if(i == levelSize - 1){
               res.add(curr.val);
             }
             if(curr.left != null){
