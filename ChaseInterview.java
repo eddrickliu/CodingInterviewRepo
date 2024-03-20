@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 public class ChaseInterview {
 
     public static void main(String[] args){
@@ -13,7 +15,15 @@ public class ChaseInterview {
     }
     
     public static int solutionA(List<Integer> arr){
-        return 1;
+        Collections.sort(arr);
+        int totalResult = 0;
+        while(arr.size() >= 2){
+            int min = arr.remove(0);
+            int max = arr.remove(arr.size()-1);
+            totalResult += (min+max)/(max+min+1);//TODO need to remember what this was here.
+            arr.add(min+max);
+        }
+        return totalResult;
     }
     public static String solutionB(String str){
         int N = str.length();
