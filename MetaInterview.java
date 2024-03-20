@@ -85,7 +85,7 @@ public class MetaInterview {
     public static List<Integer> solution(Node root){
         Queue<Node> q = new LinkedList<>();
         List<Integer> res = new ArrayList<>();
-        int currentLevel = 0;//not needed just making it clear for my head
+        // int currentLevel = 0;//not needed just making it clear for my head
         q.offer(root);
         while(!q.isEmpty()){
           int levelSize = q.size();
@@ -103,7 +103,7 @@ public class MetaInterview {
               q.offer(curr.right);
             }
           }
-          currentLevel += 1;
+          // currentLevel += 1;
         }
         return res;
       }
