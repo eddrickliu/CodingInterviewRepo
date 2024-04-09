@@ -18,6 +18,21 @@ public class AWS {
      * 
      */
     public static int getMaxNegatives(List<Integer> PnL){
-        return 0;
+        if(PnL.size()<1){
+            return 0;
+        }
+        return backTracking(PnL, 1, PnL.get(0),0);
+    }
+
+    public static int backTracking(List<Integer> PnL, int index, int cumSum, int totalCount){
+        if(cumSum <= 0){
+            return 0;
+        }
+        if(index == PnL.size()){
+            return totalCount;
+        }
+
+        return Math.max(backTracking(PnL,index+1,cumSum+PnL.get(index),totalCount),
+                        backTracking(PnL,index+1,cumSum+(PnL.get(index)*-1),totalCount+1));
     }
 }
