@@ -9,8 +9,22 @@ public class AWS {
      * https://leetcode.com/problems/minimum-adjacent-swaps-to-make-a-valid-array/description/
      * 
      */
-    public static int getMinSwaps(List<Integer> blocks){
-        return 0;
+    public static int getMinSwaps(int[] blocks){
+        int maxIndex = blocks.length - 1;//index of maxValue from the right
+        int minIndex = 0;//index of minValue from the left
+        for(int i = 1; i < blocks.length; i++){
+            if(blocks[minIndex]>blocks[i]){//this ones going in order to find the min
+                minIndex = i;
+            }
+            if(blocks[maxIndex]<blocks[blocks.length-1-i]){//this ones going reverse to find the max
+                maxIndex = blocks.length-1-i;
+            }
+        }
+        int ans = minIndex+(blocks.length-1-maxIndex);//distance of each from respective sides is the min of swaps
+        if(maxIndex < minIndex){//case when maxIndex and  minIndex are adjacent to each other
+            ans--;
+        }
+        return ans;
     }
 
     /**
