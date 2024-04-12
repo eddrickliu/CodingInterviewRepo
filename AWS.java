@@ -2,25 +2,33 @@ import java.util.*;
 
 public class AWS {
     public static void main(String[] args){
-
+        Integer[] test1 = {3,2,1,23,4,12};
+        Integer[] test2 = {2,1,1,12,2,2};
+        Integer[] test3 = {6,5,3,1};
+        System.out.println("getMinSwaps(test1)"+getMinSwaps(Arrays.asList(test1)));
+        System.out.println("getMinSwaps(test2)"+getMinSwaps(Arrays.asList(test2)));
+        System.out.println("getMinSwaps(test3)"+getMinSwaps(Arrays.asList(test3)));
+        System.out.println("getMaxNegatives(test1)"+getMaxNegatives(Arrays.asList(test1)));
+        System.out.println("getMaxNegatives(test2)"+getMaxNegatives(Arrays.asList(test2)));
+        System.out.println("getMaxNegatives(test3)"+getMaxNegatives(Arrays.asList(test3)));
     }
 
     /**
      * https://leetcode.com/problems/minimum-adjacent-swaps-to-make-a-valid-array/description/
      * 
      */
-    public static int getMinSwaps(int[] blocks){
-        int maxIndex = blocks.length - 1;//index of maxValue from the right
+    public static int getMinSwaps(List<Integer> blocks){
+        int maxIndex = blocks.size() - 1;//index of maxValue from the right
         int minIndex = 0;//index of minValue from the left
-        for(int i = 1; i < blocks.length; i++){
-            if(blocks[minIndex]>blocks[i]){//this ones going in order to find the min
+        for(int i = 1; i < blocks.size() ; i++){
+            if(blocks.get(minIndex)>blocks.get(i)){//this ones going in order to find the min
                 minIndex = i;
             }
-            if(blocks[maxIndex]<blocks[blocks.length-1-i]){//this ones going reverse to find the max
-                maxIndex = blocks.length-1-i;
+            if(blocks.get(maxIndex)<blocks.get(blocks.size() -1-i)){//this ones going reverse to find the max
+                maxIndex = blocks.size()-1-i;
             }
         }
-        int ans = minIndex+(blocks.length-1-maxIndex);//distance of each from respective sides is the min of swaps
+        int ans = minIndex+(blocks.size() -1-maxIndex);//distance of each from respective sides is the min of swaps
         if(maxIndex < minIndex){//case when maxIndex and  minIndex are adjacent to each other
             ans--;
         }
@@ -28,7 +36,7 @@ public class AWS {
     }
 
     /**
-     * determine the most amount of negatives that can will allow the cumulative sum to still be positive
+     * determine the max amount of negatives that will allow the cumulative sum to still be positive.
      * 
      */
     public static int getMaxNegatives(List<Integer> PnL){
