@@ -40,7 +40,7 @@ public class AWS {
      * 
      */
     public static int getMaxNegatives(List<Integer> PnL){
-        if(PnL.size()<1){
+        if(PnL.size()<=1){
             return 0;
         }
         return backTracking(PnL, 1, PnL.get(0),0);
