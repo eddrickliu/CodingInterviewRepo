@@ -12,6 +12,12 @@ public class Adaptiva {
         // System.out.println("getMaxNegatives(test2)"+getMaxNegatives(Arrays.asList(test2)));
         // System.out.println("getMaxNegatives(test3)"+getMaxNegatives(Arrays.asList(test3)));
     }
+    public static long journey(List<Integer> path, int maxStep) {
+    }
+
+    public static String reachTheEnd(List<String> grid, int maxTime) {
+        
+    }
 
     
 }
